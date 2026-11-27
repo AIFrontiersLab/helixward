@@ -1,0 +1,68 @@
+{
+  "boxes": [
+    {
+      "detail": "Current state of the model to be checkpointed.",
+      "id": "1",
+      "label": "Model State"
+    },
+    {
+      "detail": "Converts model state into a storable format.",
+      "id": "2",
+      "label": "Serialization"
+    },
+    {
+      "detail": "Ensures complete and consistent write operations.",
+      "id": "3",
+      "label": "Atomic Write"
+    },
+    {
+      "detail": "Stores serialized checkpoints in a cloud environment.",
+      "id": "4",
+      "label": "Cloud Storage"
+    },
+    {
+      "detail": "Checks the integrity and completeness of the stored checkpoint.",
+      "id": "5",
+      "label": "Verification"
+    },
+    {
+      "detail": "Converts stored data back into model state format.",
+      "id": "6",
+      "label": "Deserialization"
+    }
+  ],
+  "flows": [
+    {
+      "from": "1",
+      "label": "Model State -> Serialization",
+      "to": "2"
+    },
+    {
+      "from": "2",
+      "label": "Serialization -> Atomic Write",
+      "to": "3"
+    },
+    {
+      "from": "3",
+      "label": "Atomic Write -> Cloud Storage",
+      "to": "4"
+    },
+    {
+      "from": "4",
+      "label": "Cloud Storage -> Verification",
+      "to": "5"
+    },
+    {
+      "from": "5",
+      "label": "Verification -> Deserialization",
+      "to": "6"
+    },
+    {
+      "from": "6",
+      "label": "Deserialization -> Model State",
+      "to": "1"
+    }
+  ],
+  "subtitle": "One concept. Three AI perspectives. One tested architecture.",
+  "title": "Checkpoint Recovery System"
+}

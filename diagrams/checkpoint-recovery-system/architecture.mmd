@@ -1,0 +1,30 @@
+flowchart LR
+  1["Model State"]
+  2["Serialization"]
+  3["Atomic Write"]
+  4["Cloud Storage"]
+  5["Verification"]
+  6["Deserialization"]
+  1 -->|Model State -> Serialization| 2
+  2 -->|Serialization -> Atomic Write| 3
+  3 -->|Atomic Write -> Cloud Storage| 4
+  4 -->|Cloud Storage -> Verification| 5
+  5 -->|Verification -> Deserialization| 6
+  6 -->|Deserialization -> Model State| 1
+
+flowchart TB
+  subgraph happy [Happy path]
+    h_1["Model State"]
+    h_2["Serialization"]
+    h_3["Atomic Write"]
+    h_4["Cloud Storage"]
+    h_5["Verification"]
+    h_6["Deserialization"]
+    h_1 --> h_2
+    h_2 --> h_3
+    h_3 --> h_4
+    h_4 --> h_5
+    h_5 --> h_6
+  end
+  fail["Failure / abstain"]
+  h_6 -.-> fail
